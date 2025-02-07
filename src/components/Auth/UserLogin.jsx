@@ -1,33 +1,91 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { RxEyeOpen } from "react-icons/rx";
+import { LuEyeClosed } from "react-icons/lu";
+import loginLogo from "../../assets/login-logo.png";
+
 const UserLogin = () => {
+  const [password, setPassword] = useState(false);
+
+  const isPassword = () => {
+    setPassword((prevState) => !prevState);
+  };
   return (
-    <div className="py-10 w-[90%] mx-auto flex h-screen flex-col">
-      <div className=" h-full"></div>
-      <div className="">
+    <div className="h-screen  flex flex-col justify-between">
+      <div className="h-full flex items-center flex-col  justify-center ">
+        <img
+          src={loginLogo}
+          className="w-1/3 animate-bounce  duration-1000 transiton-all"
+        />
+        <h1 className="text-[30px] font-bold ">Welcome to Drive</h1>
+        <p className="text-sm text-gray-400">Make it a memorable drive</p>
+      </div>
+      <div className="w-[90%] mx-auto mb-16  ">
         <form action="">
-          <div className="relative ">
+          <div className="bg-gray-200 px-6 rounded-[40px] pb-2">
+            <label
+              htmlFor="email"
+              className="text-[13px] text-gray-500  pt-[4px]"
+            >
+              Email
+            </label>
             <input
               type="email"
               required
-              className=" border rounded outline-none  px-4 py-3  w-full"
+              autoComplete="false"
+              name="email"
+              className="w-full bg-transparent outline-none pb-2 px-1 "
             />
-            <span className="absolute -top-3 left-3 px-4 rounded-md  bg-white ">
-              Email
-            </span>
           </div>
-          <div className="relative  mt-6">
-            <input
-              type="password"
-              required
-              className=" border rounded outline-none  px-4 py-3 w-full"
-            />
-            <span className="absolute -top-3 left-3 px-4 rounded-md  bg-white ">
+          <div className="bg-gray-200 px-6 rounded-[40px] pb-2 mt-4">
+            <label
+              htmlFor="password"
+              className="text-[13px] text-gray-500 pt-[4px]"
+            >
               Password
-            </span>
+            </label>
+            <div className="flex items-center ">
+              <input
+                type={password ? "text" : "password"}
+                required
+                autoComplete="false"
+                name="email"
+                className="w-full bg-transparent outline-none  px-1 "
+              />
+              <span
+                onClick={isPassword}
+                className="cursor-pointer bg-[#fcd034]/50 border-[#fcd034]/10 border p-2 rounded-full"
+              >
+                {password ? (
+                  <RxEyeOpen className="text-[#000] font-bold text-[20px]" />
+                ) : (
+                  <LuEyeClosed className="text-[#000] font-bold text-[20px]" />
+                )}
+              </span>
+            </div>
           </div>
-          <button className="bg-black w-full text-white px-4 py-3 transition-all duration-1000 transform hover:scale-105  border border-[#000] hover:bg-white  hover:text-black rounded-md  font-medium text-[17px] mt-4">
-            Login
-          </button>
+          <div className="  rounded-[40px] pb-2 mt-4">
+            <input
+              type="button"
+              value="Login"
+              className="w-full bg-[#fcd034] cursor-pointer rounded-[40px] font-semibold w-full outline-none  px-1 py-3  "
+            />
+          </div>
+          <div className=" text-center  text-sm text-[#fccc34] font-medium pt-2">
+            <Link to="/forgot">Forgot Password ?</Link>
+          </div>
         </form>
+        <div>
+          <hr className="my-4 w-[80%] mx-auto" />
+          <div className="text-sm text-center ">
+            <p>
+              Don't have any account?{" "}
+              <Link to="/signup" className="text-[#fccc34] font-medium">
+                Register
+              </Link>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
