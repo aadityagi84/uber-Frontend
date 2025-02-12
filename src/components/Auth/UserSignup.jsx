@@ -28,7 +28,7 @@ const UserSignup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(API.signup, values);
-      toast();
+      toast.success(response.data.message);
       console.log(response.data.message);
     } catch (error) {
       toast.error(
