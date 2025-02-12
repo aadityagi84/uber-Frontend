@@ -4,3 +4,8 @@ export const API = {
   signup: `${BASE_URL}/api/register`,
   verify: `${BASE_URL}/api/verified`,
 };
+
+export const CapAPI = {
+  login: `${BASE_URL}/api/captain/login`,
+  signup: `${BASE_URL}/api/captain/register`,
+};
